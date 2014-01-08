@@ -23,6 +23,9 @@ The templates all adhere to the following features:
     if applicable.
   - Templates are not configured with any Vagrant-specific things, though
     the intention is for them to be able to work with Vagrant.
+  - Different builders are split into separate template files, rather
+    than a single template file with multiple builders. This makes it easier
+    for others to use only the pieces they want.
 
 If you plan on submitting a template, please adhere to the above rules,
 which are quite simple. Thanks!
