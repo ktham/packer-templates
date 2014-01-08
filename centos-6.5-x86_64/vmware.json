@@ -1,0 +1,34 @@
+{
+    "builders": [{
+        "type": "vmware-iso",
+        "boot_command": [
+            "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        ],
+        "boot_wait": "10s",
+        "disk_size": 10140,
+        "guest_os_type": "rhel6-64",
+        "http_directory": "http",
+        "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
+        "iso_checksum_type": "md5",
+        "iso_url": "http://yum.singlehop.com/CentOS/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+        "ssh_username": "root",
+        "ssh_password": "root",
+        "ssh_port": 22,
+        "ssh_wait_timeout": "10000s",
+        "shutdown_command": "/sbin/halt -h -p",
+        "vmx_data": {
+            "memsize": "512",
+            "numvcpus": "1",
+            "cpuid.coresPerSocket": "1"
+        }
+    }],
+
+    "provisioners": [{
+        "type": "shell",
+        "scripts": [
+            "scripts/base.sh",
+            "scripts/vmware.sh",
+            "scripts/cleanup.sh"
+        ]
+    }]
+}
